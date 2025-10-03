@@ -1,0 +1,13 @@
+# Optional: example Render service configuration file.
+# You can also configure these in the Render dashboard when connecting GitHub.
+services:
+  - type: web
+    name: trading-price-action-app
+    env: python
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run app.py --server.port $PORT --server.headless true --server.enableCORS false
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
